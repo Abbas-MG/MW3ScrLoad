@@ -1,0 +1,7 @@
+"execnow" "set developer_script 1";
+"execnow" "exec developer.cfg";
+"setdvar" "cg_fov" "105";
+"setdvar" "g_speed" "400";
+"setdvar" "jump_height" "200.0";
+"setdvar" "g_ai" 0;
+"setdvar" "cg_drawGun" 0 ; 	
