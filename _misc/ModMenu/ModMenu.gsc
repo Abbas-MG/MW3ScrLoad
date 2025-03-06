@@ -348,7 +348,7 @@ spawn_heli_friend()
 	_heli sethoverparams( 32, 10, 3 );
 	_heli setturningability( 1 );
 		
-	_heli thread shoot_loop(getaispeciesarray( "all", "all" ));	
+	_heli thread shoot_loop();	
 	
 	// would also go for UAV!
 	// _heli thread shoot_loop(GetEntArray( "script_vehicle", "code_classname" ));	
@@ -358,12 +358,13 @@ spawn_heli_friend()
 }
 
 // nasty targeting for now
-shoot_loop(ents)
+shoot_loop()
 {
-	self thread do_missle_attack(ents);
-	
 	for(;;)
 	{	
+		ents = getaispeciesarray( "all", "all" );
+		self thread do_missle_attack(ents);
+		
 		foreach (ent in ents)
 		{
 			if (isalive(ent) && ent.team != "allies" && ent.team != "neutral")
@@ -390,7 +391,7 @@ shoot_loop(ents)
 			wait 1;
 			}
 		}
-	    wait 0.5;
+	    wait 5;
 	}
 }
 
